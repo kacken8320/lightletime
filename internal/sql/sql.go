@@ -7,13 +7,13 @@ import (
 
 func InitDB(path string) *sql.DB {
 	db, _ := sql.Open("sqlite3", path)
-	db.Exec(`CREATE TABLE IF NOT EXISTS category (
+	db.Exec(`CREATE TABLE IF NOT EXISTS example_table (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			value TEXT
+			example TEXT
 		)`)
 	return db
 }
 
-func InsertCategory(db *sql.DB, value string) {
-	db.Exec(`INSERT INTO category (value) VALUES (?)`, value)
+func InsertExample(db *sql.DB, value string) {
+	db.Exec(`INSERT INTO example_table (example) VALUES (?)`, value)
 }

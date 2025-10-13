@@ -6,10 +6,10 @@ import (
 	dbpkg "lightletime/internal/sql"
 )
 
-func DepositHandler(db *sql.DB) http.HandlerFunc {
+func InsertHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		v := r.URL.Query().Get("value")
-		dbpkg.InsertCategory(db, v)
+		v := r.URL.Query().Get("example")
+		dbpkg.InsertExample(db, v)
 		w.Write([]byte("ok"))
 	}
 }
