@@ -1,20 +1,17 @@
 package main
 import (
-	"database/sql"
-	_ "github.com/mattn/go-sqlite3"
+	"net/http"
+	"fmt"
+	"lightletime/api/handler"
+	"lightletime/internal/sql"
 )
 
 func main() {
-	db, _ := sql.Open("sqlite3", "./database.db")
+	db := sql.InitDB("./database.db")
 	defer db.Close()
+	fmt.Println("db initialized")
 
-	createQuery := `
-		CREATE TABLE IF NOT EXISTS category (
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			value TEXT
-		);`
-	db.Exec(createQuery)
-
-	insertQuery := `INSERT INTO category (value) VALUES (?)`
-	db.Exec(insertQuery, "example_value");
+	fmt.Println("listening on :8080...")
+	http.HandleFunc("/deposit", handler.DepositHandler(db))
+	http.ListenAndServe(":8080", nil)
 }
