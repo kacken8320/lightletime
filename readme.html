@@ -4,29 +4,30 @@
 <h2>JSON-Format</h2>
 <pre>
 "category": {
-	"id": int,
-	"name": string,
-	"multiplier": float,
-	"time_spent_in_minutes": int,
-	"min_time_in_seconds": int,
-	"parent_id": int,
-	"is_activity": bool,
+        "id": int,
+        "name": string,
+        "multiplier": float,
+        "time_spent_in_minutes": int,
+        "min_time_in_seconds": int,
+        "parent_id": int,
+        "is_activity": bool,
 }
 Every activity is a category.
+Actually having categories and activities and adding activities as an array of activities to each category makes more sense. Then, to categories, add a "is_category_of_categories" and "is_category_of_activities", and one array for each. This way creating categories will be more time consuming, but doing the usual task (fetching an activity from a category) will be more performant.
 </pre>
 
 <h2>User-Flow</h2>
 <ul>
-	<li>Create activity</li>
-	<li>Set name, multiplier and minimal time</li>
-	<li>(Optional) Add activity to category (otherwise in root)</li>
-	<li>(Optional) Add category to category</li>
-	<li>Click "give activity"</li>
-	<li>(Optional) Choose category to choose from (otherwise defaults to root)</li>
-	<li>(Optional) Insert minimal time (otherwise defaults to 0 seconds)</li>
-	<li>After receiving activity, press "start" to start counting time</li>
-	<li>Press "stop" to stop timer</li>
-	<li>(Optional: Change counted time)</li>
-	<li>Press "add time to activity" (or cancel)</li>
-	<li>(Optional) Insert custom time to chosen activity (to use as tracker instead of recommender)</li>
+        <li>Create activity</li>
+        <li>Set name, multiplier and minimal time</li>
+        <li>(Optional) Add activity to category (otherwise in root)</li>
+        <li>(Optional) Add category to category</li>
+        <li>Click "give activity"</li>
+        <li>(Optional) Choose category to choose from (otherwise defaults to root)</li>
+        <li>(Optional) Insert minimal time (otherwise defaults to 0 seconds)</li>
+        <li>After receiving activity, press "start" to start counting time</li>
+        <li>Press "stop" to stop timer</li>
+        <li>(Optional: Change counted time)</li>
+        <li>Press "add time to activity" (or cancel)</li>
+        <li>(Optional) Insert custom time to chosen activity (to use as tracker instead of recommender)</li>
 </ul>
